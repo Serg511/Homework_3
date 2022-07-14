@@ -1,0 +1,18 @@
+---
+- name: Install load balancer servers
+  hosts: load_balancer_servers
+  become: true
+  roles:
+    - load_balancer
+
+- name: Install and configire mysql server
+  hosts: db_server
+  become: true
+  roles:
+    - mariadb
+
+- name: Install and configure web servers
+  hosts: web_servers
+  become: true
+  roles:
+    - web
